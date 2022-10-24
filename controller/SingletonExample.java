@@ -9,7 +9,33 @@ import persistencia.Persistencia;
 
 public class SingletonExample // implements IModelFactoryService
 {
+	
+	Object objetoSingleton;
 
+	// instacia unica del controlador
+    private static SingletonExample instancia = null; 
+  
+    // constructor privado
+    private SingletonExample() 
+    { 
+    	objetoSingleton = new Object();
+    } 
+  
+    // Metodo estaticbo para obtener la instancia
+    
+    public static SingletonExample getInstance() 
+    { 
+        // Asegura una unica instancia
+        if (instancia == null) { 
+        	instancia = new SingletonExample(); 
+        } 
+        return instancia; 
+    }
+	
+	
+	
+	
+	
 	// Aqui va la variable que queremos que sea global
 	//Banco banco;
 	
@@ -17,50 +43,44 @@ public class SingletonExample // implements IModelFactoryService
 	//------------------------------  Singleton ------------------------------------------------
 	// Clase estatica oculta. Tan solo se instanciara el singleton una vez
 	private static class SingletonHolder { 
-		// El constructor de Singleton puede ser llamado desde aquí al ser protected
+		// El constructor de Singleton puede ser llamado desde aquÃ­ al ser protected
 		private final static SingletonExample eINSTANCE = new SingletonExample();
 	}
 
-	// Método para obtener la instancia de nuestra clase
-	public static SingletonExample getInstance() {
-		return SingletonHolder.eINSTANCE;
-	}
+	/*
+	 * // MÃ©todo para obtener la instancia de nuestra clase public static
+	 * SingletonExample getInstance() { return SingletonHolder.eINSTANCE; }
+	 */
 	
-	public SingletonExample() {
-		
-		
-		//1. inicializar datos y luego guardarlo en archivos
-//		iniciarSalvarDatosPrueba();
-		
-		//2. Cargar los datos de los archivos
-//		cargarDatosDesdeArchivos();
-		
-		
-		//3. Guardar y Cargar el recurso serializable binario
-//		guardarResourceBinario();
-//		cargarResourceBinario();
-		
-		//4. Guardar y Cargar el recurso serializable XML
-//		guardarResourceXML();
-		cargarResourceXML();
-
-		
-//		//Siempre se debe verificar si la raiz del recurso es null
-//		if(banco == null)
-//		{
-//			System.out.println("es null");
-//			inicializarDatos();
-////			guardarResourceSerializable();
-//			guardarResourceXML();
-//		}
-		
-		//Registrar la accion de incio de sesión
-//		Persistencia.guardaRegistroLog("Inicio de sesión del usuario:pedro", 1, "inicioSesion");
-		
-		
-	}
-
-	
+	/*
+	 * public SingletonExample() {
+	 * 
+	 * 
+	 * //1. inicializar datos y luego guardarlo en archivos //
+	 * iniciarSalvarDatosPrueba();
+	 * 
+	 * //2. Cargar los datos de los archivos // cargarDatosDesdeArchivos();
+	 * 
+	 * 
+	 * //3. Guardar y Cargar el recurso serializable binario //
+	 * guardarResourceBinario(); // cargarResourceBinario();
+	 * 
+	 * //4. Guardar y Cargar el recurso serializable XML // guardarResourceXML();
+	 * cargarResourceXML();
+	 * 
+	 * 
+	 * // //Siempre se debe verificar si la raiz del recurso es null // if(banco ==
+	 * null) // { // System.out.println("es null"); // inicializarDatos(); ////
+	 * guardarResourceSerializable(); // guardarResourceXML(); // }
+	 * 
+	 * //Registrar la accion de incio de sesiÃ³n //
+	 * Persistencia.guardaRegistroLog("Inicio de sesiÃ³n del usuario:pedro", 1,
+	 * "inicioSesion");
+	 * 
+	 * 
+	 * }
+	 * 
+	 */
 	
 	private void iniciarSalvarDatosPrueba() throws IOException {
 		
